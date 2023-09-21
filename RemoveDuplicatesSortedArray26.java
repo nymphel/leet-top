@@ -14,25 +14,17 @@ public class RemoveDuplicatesSortedArray26 {
 
 
     public int removeDuplicates(int[] nums) {
-        int[] unique = new int[nums.length];
 
-        int k = 0;
-        for (int i = 0; i < nums.length; i++) {
-            if (i + 1 == nums.length) { //not the last one
-                unique[k] = nums[i];
+        int k = 1;
+        int val = nums[0]; // store first
+
+        for (int i = 1; i < nums.length; i++) {
+            if(nums[i] != val) {
+                nums[k] = nums[i];
+                val = nums[i];
                 k++;
-            } else {
-                if (nums[i] != nums[i + 1]) {
-                    unique[k] = nums[i];
-                    k++;
-                }
             }
 
-            nums[i] = 0;
-        }
-
-        for (int i = 0; i < unique.length; i++) {
-            nums[i] = unique[i];
         }
 
         System.out.println(Arrays.toString(nums));
